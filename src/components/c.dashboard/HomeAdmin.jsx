@@ -9,7 +9,7 @@ const HomeAdmin = () => {
   useEffect(() => {
     // Obtener el total de productos
     axios
-      .get('http://localhost:8000/dashboard/total-productos')
+      .get('http://localhost:3000/dashboard/total-productos')
       .then((res) => {
         setTotalProductos(res.data.total);
       })
@@ -17,7 +17,7 @@ const HomeAdmin = () => {
 
     // Obtener el valor total de la tienda
     axios
-      .get('http://localhost:8000/dashboard/valor-total-tienda')
+      .get('http://localhost:3000/dashboard/valor-total-tienda')
       .then((res) => {
         setValorTotalTienda(res.data.valorTotal);
       })
@@ -25,7 +25,7 @@ const HomeAdmin = () => {
 
     // Obtener la cantidad de usuarios registrados
     axios
-      .get('http://localhost:8000/dashboard/cantidad-usuarios')
+      .get('http://localhost:3000/dashboard/cantidad-usuarios')
       .then((res) => {
         setCantidadUsuarios(res.data.cantidad);
       })

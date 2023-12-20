@@ -37,7 +37,7 @@ const PageCheckOut = () => {
 
                 // Hacer una solicitud al backend para obtener los productos del carrito
                 const response = await axios.get(
-                    `http://localhost:8000/carrito?usuario_id=${usuario_id}`
+                    `http://localhost:3000/carrito?usuario_id=${usuario_id}`
                 );
 
                 // Actualizar el estado con los productos y la cantidad inicial
@@ -157,7 +157,7 @@ const PageCheckOut = () => {
         }
 
         // Verifica si el formulario está completo
-        const isValidName = (value) => /^[A-Za-z]+$/.test(value);
+        const isValidName = (value) => /^[A-Za-z\s]+$/.test(value);
         const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
         const isValidPhoneNumber = (value) => /^\d{9}$/.test(value);
 
@@ -236,11 +236,11 @@ const PageCheckOut = () => {
             const items = carritoItems.map(item => ({
                 description: item.nombre,
                 price: item.precio,
-                quantity: parseInt(cantidadProductos[item.producto_id], 10), // Asegura que el valor es un entero
+                quantity: parseInt(cantidadProductos[item.producto_id], 10),
                 currency_id: "CLP"
             }));
 
-            const response = await axios.post("http://localhost:8000/checkout", {
+            const response = await axios.post("http://localhost:3000/checkout", {
                 items,
                 user_id,
                 firstName,

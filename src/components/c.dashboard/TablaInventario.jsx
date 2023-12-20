@@ -14,7 +14,7 @@ const TablaInventario = () => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:8000/dashboard/inventario/')
+            .get('http://localhost:3000/dashboard/inventario/')
             .then((res) => {
                 console.log(res.data);
                 setProductos(res.data);
@@ -23,7 +23,7 @@ const TablaInventario = () => {
             .catch((err) => console.log(err));
 
         axios
-            .get('http://localhost:8000/dashboard/categorias')
+            .get('http://localhost:3000/dashboard/categorias')
             .then((res) => {
                 setCategorias(res.data);
                 console.log('Categorías cargadas:', res.data);
@@ -36,7 +36,7 @@ const TablaInventario = () => {
 
     const eliminarProducto = (id) => {
         axios
-            .delete('http://localhost:8000/dashboard/inventario/' + id)
+            .delete('http://localhost:3000/dashboard/inventario/' + id)
             .then((res) => {
                 location.reload();
             })

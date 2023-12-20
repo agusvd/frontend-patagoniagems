@@ -16,7 +16,7 @@ const CategoriasP = () => {
     useEffect(() => {
         // Obtener las categorías desde el backend al cargar el componente
         axios
-            .get('http://localhost:8000/dashboard/categorias')
+            .get('http://localhost:3000/dashboard/categorias')
             .then((res) => {
                 setCategorias(res.data);
             })
@@ -30,13 +30,13 @@ const CategoriasP = () => {
         event.preventDefault();
         const updateData = { categoria, imagen };
         axios
-            .post('http://localhost:8000/dashboard/categorias', updateData)
+            .post('http://localhost:3000/dashboard/categorias', updateData)
             .then((res) => {
                 console.log(res);
                 setCategoria('');
                 setImagen('');
                 // Vuelve a cargar las categorías después de agregar una nueva
-                axios.get('http://localhost:8000/dashboard/categorias')
+                axios.get('http://localhost:3000/dashboard/categorias')
                     .then((res) => {
                         setCategorias(res.data);
                     })
@@ -67,7 +67,7 @@ const CategoriasP = () => {
 
     const handleConfirmDelete = (id) => {
         axios
-            .delete(`http://localhost:8000/dashboard/categorias/${id}`)
+            .delete(`http://localhost:3000/dashboard/categorias/${id}`)
             .then((res) => {
                 console.log(res);
                 toast.success('Categoría eliminada exitosamente.', {
@@ -80,7 +80,7 @@ const CategoriasP = () => {
                     progress: undefined,
                 });
                 // Vuelve a cargar las categorías después de agregar una nueva
-                axios.get('http://localhost:8000/dashboard/categorias')
+                axios.get('http://localhost:3000/dashboard/categorias')
                     .then((res) => {
                         setCategorias(res.data);
                     })

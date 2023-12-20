@@ -25,7 +25,7 @@ const Cart = ({ onClose }) => {
 
                 // Hacer una solicitud al backend para obtener los productos del carrito
                 const response = await axios.get(
-                    `http://localhost:8000/carrito?usuario_id=${usuario_id}`
+                    `http://localhost:3000/carrito?usuario_id=${usuario_id}`
                 );
 
                 // Actualizar el estado con los productos y la cantidad inicial
@@ -77,7 +77,7 @@ const Cart = ({ onClose }) => {
         // Actualizar la base de datos con la nueva cantidad
         const nuevoPrecioTotal = carritoItem.precio * cantidad;
         axios
-            .put(`http://localhost:8000/carrito/${carritoItem.id}`, {
+            .put(`http://localhost:3000/carrito/${carritoItem.id}`, {
                 cantidad_total: cantidad,
                 precio_total: nuevoPrecioTotal,
             })
@@ -92,7 +92,7 @@ const Cart = ({ onClose }) => {
     // Función para eliminar un producto del carrito
     const eliminarProductoCarrito = (id) => {
         axios
-            .delete(`http://localhost:8000/carrito/${id}`)
+            .delete(`http://localhost:3000/carrito/${id}`)
             .then((res) => {
                 console.log(res.data);
                 // Actualizar el estado eliminando el producto del carrito

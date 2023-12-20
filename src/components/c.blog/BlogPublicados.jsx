@@ -12,7 +12,7 @@ const BlogPublicados = () => {
 
     axios.defaults.withCredentials = true
     useEffect(() => {
-        axios.get('http://localhost:8000')
+        axios.get('http://localhost:3000')
             .then(res => {
                 if (res.data.Status === "Perfecto") {
                     setAuth(true);
@@ -30,7 +30,7 @@ const BlogPublicados = () => {
     //OBTENER TODOS LOS POST DE LA BASE DE DATOS
     useEffect(() => {
         axios
-            .get('http://localhost:8000/blogs')
+            .get('http://localhost:3000/blogs')
             .then((res) => {
                 if (res.data.length === 0) {
                     setPosts([]);

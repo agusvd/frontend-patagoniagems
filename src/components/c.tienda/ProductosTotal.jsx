@@ -16,7 +16,7 @@ const ProductosTotal = () => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:8000/productos')
+            .get('http://localhost:3000/productos')
             .then((res) => {
                 console.log(res.data);
                 setProductos(res.data);
@@ -39,7 +39,7 @@ const ProductosTotal = () => {
     // Obtener la informacion del backend
     // Aqui obtendremos las categorias
     useEffect(() => {
-        axios.get('http://localhost:8000/dashboard/categorias')
+        axios.get('http://localhost:3000/dashboard/categorias')
             .then((res) => {
                 console.log(res.data) // luego eliminar
                 setCategorias(res.data)
@@ -58,7 +58,7 @@ const ProductosTotal = () => {
                 const token = Cookies.get('token');
                 const decodedToken = jwtDecode(token);
                 const usuario_id = decodedToken.id;
-                const response = await axios.get(`http://localhost:8000/carrito?usuario_id=${usuario_id}`);
+                const response = await axios.get(`http://localhost:3000/carrito?usuario_id=${usuario_id}`);
                 setCarritoItems(response.data);
                 const cantidadInicial = {};
                 response.data.forEach((item) => {
@@ -104,7 +104,7 @@ const ProductosTotal = () => {
             cantidad_total: 1,
         };
         axios
-            .post('http://localhost:8000/carrito', datosCarrito)
+            .post('http://localhost:3000/carrito', datosCarrito)
             .then((res) => {
                 console.log(res.data);
                 setCarritoVisible(true);

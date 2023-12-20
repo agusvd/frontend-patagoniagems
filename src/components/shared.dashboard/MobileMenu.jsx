@@ -12,7 +12,7 @@ const MobileMenu = () => {
     const [mensaje, setMensaje] = useState('')
 
     useEffect(() => {
-        axios.get('http://localhost:8000')
+        axios.get('http://localhost:3000')
             .then(res => {
                 if (res.data.Status === "Perfecto") {
                     setNombre(res.data.nombre);
@@ -27,7 +27,7 @@ const MobileMenu = () => {
     //logout
     axios.defaults.withCredentials = true;
     const handleLogout = () => {
-        axios.get('http://localhost:8000/logout')
+        axios.get('http://localhost:3000/logout')
             .then(res => {
                 location.reload(true);
             })

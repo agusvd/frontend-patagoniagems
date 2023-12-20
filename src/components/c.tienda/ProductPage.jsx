@@ -27,7 +27,7 @@ const ProductPage = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8000/tienda/producto/${nombre}`)
+            .get(`http://localhost:3000/tienda/producto/${nombre}`)
             .then((res) => {
                 if (res.data.length === 0) {
                     setProducto(null);
@@ -69,7 +69,7 @@ const ProductPage = () => {
         };
         //peticion
         axios
-            .post('http://localhost:8000/carrito', datosCarrito)
+            .post('http://localhost:3000/carrito', datosCarrito)
             .then((res) => {
                 console.log(res.data);
                 setCarritoVisible(true);

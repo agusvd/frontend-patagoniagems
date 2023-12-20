@@ -8,7 +8,7 @@ const PageSuccess = () => {
 
     useEffect(() => {
         // Hacer una solicitud al backend para obtener detalles del pago exitoso
-        axios.get("http://localhost:8000/success")
+        axios.get("http://localhost:3000/success")
             .then(response => {
                 setTransactionDetails(response.data.transactionDetails);
             })

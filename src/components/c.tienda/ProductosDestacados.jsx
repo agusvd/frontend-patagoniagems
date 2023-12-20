@@ -19,7 +19,7 @@ const ProductosDestacados = () => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:8000/productos')
+            .get('http://localhost:3000/productos')
             .then((res) => {
                 console.log(res.data);
                 setProductos(res.data);
@@ -27,7 +27,7 @@ const ProductosDestacados = () => {
             .catch((err) => console.log(err));
 
         axios
-            .get('http://localhost:8000/dashboard/categorias')
+            .get('http://localhost:3000/dashboard/categorias')
             .then((res) => {
                 console.log(res.data);
                 setCategorias(res.data);
@@ -48,7 +48,7 @@ const ProductosDestacados = () => {
                 const decodedToken = jwtDecode(token);
                 const usuario_id = decodedToken.id;
                 const response = await axios.get(
-                    `http://localhost:8000/carrito?usuario_id=${usuario_id}`
+                    `http://localhost:3000/carrito?usuario_id=${usuario_id}`
                 );
                 setCarritoItems(response.data);
                 const cantidadInicial = {};
@@ -95,7 +95,7 @@ const ProductosDestacados = () => {
         };
 
         axios
-            .post('http://localhost:8000/carrito', datosCarrito)
+            .post('http://localhost:3000/carrito', datosCarrito)
             .then((res) => {
                 console.log(res.data);
                 setCarritoVisible(true);

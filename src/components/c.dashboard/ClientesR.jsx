@@ -11,7 +11,7 @@ const ClientesR = () => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:8000/usuarios')
+            .get('http://localhost:3000/usuarios')
             .then((res) => {
                 console.log(res.data);
                 setUsuarios(res.data);

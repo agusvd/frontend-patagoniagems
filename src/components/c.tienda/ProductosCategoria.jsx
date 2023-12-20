@@ -22,7 +22,7 @@ const ProductosCategoria = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8000/tienda/${categoriaId}`)
+            .get(`http://localhost:3000/tienda/${categoriaId}`)
             .then((res) => {
                 console.log(res.data);
                 setProductos(res.data);
@@ -30,7 +30,7 @@ const ProductosCategoria = () => {
             .catch((err) => console.log(err));
 
         axios
-            .get(`http://localhost:8000/dashboard/categorias/${categoriaId}`)
+            .get(`http://localhost:3000/dashboard/categorias/${categoriaId}`)
             .then((res) => {
                 console.log(res.data);
                 setCategoriaNombre(res.data[0].categoria);
@@ -72,7 +72,7 @@ const ProductosCategoria = () => {
         };
 
         axios
-            .post('http://localhost:8000/carrito', datosCarrito)
+            .post('http://localhost:3000/carrito', datosCarrito)
             .then((res) => {
                 console.log(res.data);
                 setCarritoVisible(true);

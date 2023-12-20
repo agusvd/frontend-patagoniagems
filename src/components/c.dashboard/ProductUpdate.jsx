@@ -22,7 +22,7 @@ const Product = () => {
     useEffect(() => {
         // Obtener las categorías desde el backend al cargar el componente
         axios
-            .get('http://localhost:8000/dashboard/categorias')
+            .get('http://localhost:3000/dashboard/categorias')
             .then((res) => {
                 setCategorias(res.data);
             })
@@ -32,7 +32,7 @@ const Product = () => {
     }, []);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/dashboard/search/' + id)
+        axios.get('http://localhost:3000/dashboard/search/' + id)
             .then(res => {
                 setNombre(res.data[0].nombre);
                 setDescripcion(res.data[0].descripcion);
@@ -52,7 +52,7 @@ const Product = () => {
     function handleUpdate(event) {
         event.preventDefault();
         const updatedData = { nombre, categoria_id, cantidad_gramos, cantidad_ml, stock, descripcion, imagen,  precio, es_destacado };
-        axios.put('http://localhost:8000/dashboard/actualizar/' + id, updatedData)
+        axios.put('http://localhost:3000/dashboard/actualizar/' + id, updatedData)
             .then(res => {
                 console.log(res);
                 navigate('/dashboard/inventario');

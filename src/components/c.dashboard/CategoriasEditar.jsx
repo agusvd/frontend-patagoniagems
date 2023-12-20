@@ -11,7 +11,7 @@ const CategoriasEditar = () => {
     useEffect(() => {
         // Obtener las categorías desde el backend al cargar el componente
         axios
-            .get('http://localhost:8000/dashboard/categorias/' + id)
+            .get('http://localhost:3000/dashboard/categorias/' + id)
             .then((res) => {
                 setCategoria(res.data[0].categoria)
                 setImagen(res.data[0].imagen)
@@ -25,7 +25,7 @@ const CategoriasEditar = () => {
     function handleUpdate(event) {
         event.preventDefault();
         const updateData = { categoria, imagen }
-        axios.put('http://localhost:8000/dashboard/categorias/' + id, updateData)
+        axios.put('http://localhost:3000/dashboard/categorias/' + id, updateData)
             .then(res => {
                 console.log(res)
                 navigate('/dashboard/categorias')

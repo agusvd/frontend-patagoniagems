@@ -23,7 +23,7 @@ const Blog = () => {
 
     axios.defaults.withCredentials = true
     useEffect(() => {
-        axios.get('http://localhost:8000')
+        axios.get('http://localhost:3000')
             .then(res => {
                 if (res.data.Status === "Perfecto") {
                     setAuth(true);
@@ -39,7 +39,7 @@ const Blog = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8000/blog/post/${id}`)
+            .get(`http://localhost:3000/blog/post/${id}`)
             .then((res) => {      //si la solicitud es exitosa, se ejecuta esta parte del codigo
                 console.log(res.data);
                 if (res.data.length > 0) {//verifica si hay un elemento en el array de datos recibidos

@@ -29,7 +29,7 @@ const Search = ({ onClose }) => {
         }
 
         try {
-            const response = await axios.get('http://localhost:8000/productos/buscar', {
+            const response = await axios.get('http://localhost:3000/productos/buscar', {
                 params: {
                     searchText: searchText
                 }
@@ -44,7 +44,7 @@ const Search = ({ onClose }) => {
     // Efecto para cargar las categorías al montar el componente.
     useEffect(() => {
         axios
-            .get('http://localhost:8000/dashboard/categorias')
+            .get('http://localhost:3000/dashboard/categorias')
             .then((res) => {
                 console.log(res.data);
                 setCategorias(res.data);

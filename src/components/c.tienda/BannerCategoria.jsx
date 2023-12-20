@@ -8,7 +8,7 @@ const BannerCategoria = () => {
     const [categorias, setCategorias] = useState([]);
     useEffect(() => {
         // Obtener las categorías desde el backend
-        axios.get('http://localhost:8000/dashboard/categorias')
+        axios.get('http://localhost:3000/dashboard/categorias')
             .then(res => {
                 setCategorias(res.data);
             })

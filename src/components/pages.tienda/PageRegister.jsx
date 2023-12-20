@@ -23,7 +23,7 @@ const PageRegister = () => {
             return;
         }
 
-        axios.post('http://localhost:8000/register', values)
+        axios.post('http://localhost:3000/register', values)
             .then(res => {
                 if (res.data.Status === "Perfecto") {
                     toast.success("Registrado correctamente");

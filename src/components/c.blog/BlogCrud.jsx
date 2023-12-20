@@ -19,7 +19,7 @@ const BlogCrud = () => {
     //para diferenciar crear un post nuevo o editar uno
     useEffect(() => {
         if (id) {
-            axios.get(`http://localhost:8000/blog/post/${id}`)
+            axios.get(`http://localhost:3000/blog/post/${id}`)
                 .then((res) => {
                     if (res.data.length > 0) {
                         const post = res.data[0]
@@ -35,15 +35,9 @@ const BlogCrud = () => {
 
     // CREAR UN POST NUEVO 
     const addPost = () => {
-        //si el titulo y la descripcion están vacios no agrega un post
-        if (!titulo || !descripcion || !img || !fechaPublicacion) {
-            console.log("No se puede agregar un post vacío");
-            alert("los campos titulo y descripcion son Obligatorios")
-            return;
-        }
 
         axios
-            .post(`http://localhost:8000/blog/create`, {
+            .post(`http://localhost:3000/blog/create`, {
                 titulo: titulo,
                 descripcion: descripcion,
                 img: img,
@@ -69,7 +63,7 @@ const BlogCrud = () => {
 
         console.log(Newinfo)
         axios
-            .put(`http://localhost:8000/blog/update/${id}`, Newinfo)
+            .put(`http://localhost:3000/blog/update/${id}`, Newinfo)
             .then((res) => {
                 if (res.status === 200) {
                     console.log("El post ha sido actualizado", res.data);
@@ -88,7 +82,7 @@ const BlogCrud = () => {
             return
         }
         axios
-            .delete(`http://localhost:8000/blog/delete/${id}`)
+            .delete(`http://localhost:3000/blog/delete/${id}`)
             .then((res) => {
                 console.log("El post ha sido eliminado correctamente", res.data)
                 navigate(`/blogs`)
@@ -109,14 +103,14 @@ const BlogCrud = () => {
                         <div className=" bg-gray-100 p-2 rounded-lg">
                             <input type="text" id="title" value={titulo} placeholder='Agregar Título' className="flex w-full p-2  rounded-lg bg-gray-100 text-black" onChange={(event) => { setTitulo(event.target.value) }} />
                         </div>
+                        <div className="mb-2">
+                            <label htmlFor="title" className="text-lg font-bold text-purple-500">Imagen</label>
+                        </div>
                         <div className='bg-gray-100 p-2 rounded-lg mt-5'>
-                            <input required className="flex w-full p-2  rounded-lg bg-gray-100 text-black"
+                            <input className="flex w-full p-2  rounded-lg bg-gray-100 text-black"
                                 type="text" placeholder="url" value={img}
                                 onChange={(event) => { setImg(event.target.value) }}
                             />
-                        </div>
-                        <div className="mt-5">
-                            <input type="date" value={fechaPublicacion} className="flex w-full p-2 rounded-lg bg-gray-100 text-black" onChange={(event) => { setFechaPublicacion(event.target.value) }}/>
                         </div>
                         <div id="editorContainer" className="pt-10">
                             <div className="mb-2">

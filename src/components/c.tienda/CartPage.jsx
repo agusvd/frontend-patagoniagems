@@ -25,7 +25,7 @@ const Cart = ({ onClose }) => {
                 const decodedToken = jwtDecode(token);
                 const usuario_id = decodedToken.id;
                 const response = await axios.get(
-                    `http://localhost:8000/carrito?usuario_id=${usuario_id}`
+                    `http://localhost:3000/carrito?usuario_id=${usuario_id}`
                 );
                 setCarritoItems(response.data);
                 const cantidadInicial = {};
@@ -76,7 +76,7 @@ const Cart = ({ onClose }) => {
         const nuevoPrecioTotal = carritoItem.precio * cantidad;
 
         axios
-            .put(`http://localhost:8000/carrito/${carritoItem.id}`, {
+            .put(`http://localhost:3000/carrito/${carritoItem.id}`, {
                 cantidad_total: cantidad,
                 precio_total: nuevoPrecioTotal,
             })
@@ -90,7 +90,7 @@ const Cart = ({ onClose }) => {
 
     const eliminarProductoCarrito = (id) => {
         axios
-            .delete(`http://localhost:8000/carrito/${id}`)
+            .delete(`http://localhost:3000/carrito/${id}`)
             .then((res) => {
                 console.log(res.data);
                 setCarritoItems((prevCarritoItems) =>

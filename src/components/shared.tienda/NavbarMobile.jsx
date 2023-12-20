@@ -20,7 +20,7 @@ const NavbarMobile = () => {
 
     axios.defaults.withCredentials = true
     useEffect(() => {
-        axios.get('http://localhost:8000')
+        axios.get('http://localhost:3000')
             .then(res => {
                 if (res.data.Status === "Perfecto") {
                     setAuth(true);
@@ -39,7 +39,7 @@ const NavbarMobile = () => {
             const token = Cookies.get('token');
             const decodedToken = jwtDecode(token);
             const usuario_id = decodedToken.id;
-            axios.get(`http://localhost:8000/carrito?usuario_id=${usuario_id}`)
+            axios.get(`http://localhost:3000/carrito?usuario_id=${usuario_id}`)
                 .then(res => {
                     const productosCarrito = res.data.reduce((acc, item) => acc + item.cantidad_total, 0);
                     setTotalCarrito(productosCarrito);
@@ -53,7 +53,7 @@ const NavbarMobile = () => {
 
     const handleDelete = () => {
         axios
-            .get('http://localhost:8000/logout')
+            .get('http://localhost:3000/logout')
             .then(res => {
                 setAuth(false);
                 window.location.reload(); // Recarga la página después del logout
@@ -64,7 +64,7 @@ const NavbarMobile = () => {
 
     useEffect(() => {
         // Obtener las categorías desde el backend
-        axios.get('http://localhost:8000/dashboard/categorias')
+        axios.get('http://localhost:3000/dashboard/categorias')
             .then(res => {
                 setCategorias(res.data);
             })

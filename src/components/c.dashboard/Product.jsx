@@ -21,7 +21,7 @@ const Product = () => {
     useEffect(() => {
         // Obtener las categorías desde el backend al cargar el componente
         axios
-            .get('http://localhost:8000/dashboard/categorias')
+            .get('http://localhost:3000/dashboard/categorias')
             .then((res) => {
                 setCategorias(res.data);
             })
@@ -33,7 +33,7 @@ const Product = () => {
     function handleSubmit(event) {
         event.preventDefault();
         axios
-            .post('http://localhost:8000/dashboard/inventario/agregar', {nombre, categoria_id, cantidad_gramos, cantidad_ml, stock, descripcion, imagen,  precio, es_destacado })
+            .post('http://localhost:3000/dashboard/inventario/agregar', {nombre, categoria_id, cantidad_gramos, cantidad_ml, stock, descripcion, imagen,  precio, es_destacado })
             .then((res) => {
                 console.log(res);
                 navigate('/dashboard/inventario');
